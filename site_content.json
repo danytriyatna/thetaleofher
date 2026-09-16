@@ -1,0 +1,287 @@
+{
+  "general": {
+    "site_title": "The Tale of Her — The Summer Capsule 2026",
+    "campaign_title": "The Summer Capsule 2026",
+    "campaign_subtitle": "A small capsule of relaxed collars and light cotton, made in Jakarta.",
+    "hero_cta_text": "Discover The Pieces",
+    "hero_cta_link": "katalog.html",
+    "marquee_text": "Made in Indonesia ✦ For Her ✦ Small Batch ✦ Timeless, Not Trend",
+    "whatsapp_number": "6281805052929",
+    "whatsapp_display": "0818 0505 2929",
+    "whatsapp_default_message": "Hello The Tale of Her! I'd like to ask about your collection.",
+    "instagram_url": "https://instagram.com/thetaleofher",
+    "footer_about_text": "Timeless wardrobe essentials crafted with a modern, feminine perspective in Jakarta."
+  },
+  "brand_story": [
+    {
+      "section": "About Us (Homepage)",
+      "heading": "The Tale of Her creates timeless wardrobe essentials with a modern, feminine perspective.",
+      "quote": "Every design tells her story.",
+      "paragraph_1": "Designed with clean silhouettes, refined details, and carefully selected fabrics, each piece is made to bring effortless elegance into everyday dressing.",
+      "paragraph_2": "We believe that beautiful clothing should feel as good as it looks—comfortable, versatile, and made to be worn for years to come.",
+      "image": "assets/selena-white-1.jpg"
+    },
+    {
+      "section": "About the Collection (Homepage)",
+      "heading": "Relaxed collars, light cotton, and colors borrowed from the evening light.",
+      "quote": "About the Collection",
+      "paragraph_1": "A small capsule for warm days — quiet pieces, easy to mix and match, and made to be handed down. Not a passing trend, but a story that grows with her.",
+      "paragraph_2": "",
+      "image": ""
+    },
+    {
+      "section": "Material & Making (Editorial)",
+      "heading": "One color, twenty dips.",
+      "quote": "Material & Making",
+      "paragraph_1": "This season's soft rose tone comes from a gradual dyeing process — the fabric is dipped into natural dye again and again until the color settles like the late-afternoon sun.",
+      "paragraph_2": "Each piece is sewn in small batches by our tailoring partners in Jakarta, with generous seam allowances left on purpose — so it can be altered, not discarded.",
+      "image": "assets/camalia-taupe-6.jpg"
+    },
+    {
+      "section": "Studio Notes (Quote Band)",
+      "heading": "“The best clothes are the ones that make you forget you're wearing them.”",
+      "quote": "— Studio Notes, 2026",
+      "paragraph_1": "",
+      "paragraph_2": "",
+      "image": "assets/vittoria-black-1.jpg"
+    }
+  ],
+  "products": [
+    {
+      "id": "vittoria",
+      "name": "Vittoria Shirt",
+      "category": "shirts",
+      "price": 329000,
+      "badge": "New",
+      "colors": [
+        "White (#F2ECE1)",
+        "Black (#241A1F)"
+      ],
+      "sizes": "One Size",
+      "material": "Premium cotton blend",
+      "fit_details": "Length 68 cm, bust 148 cm, shoulder 44 cm, arm 38 cm, sleeve 44 cm. Measurements may vary by approx 1–2 cm. Unlined, non-sheer, no stretch.",
+      "description": "Elegant 3/4 sleeves and a statement collar bring a refined touch to this timeless silhouette. Designed with a relaxed fit for all-day comfort, it effortlessly combines sophistication with everyday ease.",
+      "care_instructions": "Handwash recommended. Do not bleach. Wash in cold water. Do not tumble dry.",
+      "image_front": "assets/vittoria-white-1.jpg",
+      "image_back": "assets/vittoria-white-2.jpg",
+      "gallery": [
+        "assets/vittoria-white-1.jpg",
+        "assets/vittoria-white-2.jpg",
+        "assets/vittoria-white-3.jpg",
+        "assets/vittoria-white-4.jpg",
+        "assets/vittoria-white-5.jpg",
+        "assets/vittoria-white-6.jpg",
+        "assets/vittoria-black-1.jpg",
+        "assets/vittoria-black-2.jpg",
+        "assets/vittoria-black-3.jpg",
+        "assets/vittoria-black-4.jpg",
+        "assets/vittoria-black-5.jpg",
+        "assets/vittoria-black-6.jpg"
+      ],
+      "status": "Tampil"
+    },
+    {
+      "id": "selena",
+      "name": "Selena Shirt",
+      "category": "shirts",
+      "price": 329000,
+      "badge": "New",
+      "colors": [
+        "White (#F2ECE1)",
+        "Black (#241A1F)"
+      ],
+      "sizes": "One Size",
+      "material": "Premium cotton blend",
+      "fit_details": "Bust 126 cm, length 60 cm, shoulder 44 cm, arm 48 cm, sleeve 60 cm, waist 128 cm, hips 136 cm. Measurements may vary by approx 1–2 cm. Unlined, non-sheer, no stretch.",
+      "description": "Inspired by the kimono, this shirt features flexible elastic cuffs that let the sleeves be worn at different lengths for versatile styling. Finished with functional front buttons and patch pockets, it balances comfort, sophistication and modern style.",
+      "care_instructions": "Handwash recommended. Do not bleach. Wash in cold water. Do not tumble dry.",
+      "image_front": "assets/selena-white-1.jpg",
+      "image_back": "assets/selena-white-2.jpg",
+      "gallery": [
+        "assets/selena-white-1.jpg",
+        "assets/selena-white-2.jpg",
+        "assets/selena-white-3.jpg",
+        "assets/selena-white-4.jpg",
+        "assets/selena-white-5.jpg",
+        "assets/selena-white-6.jpg",
+        "assets/selena-black-1.jpg",
+        "assets/selena-black-2.jpg",
+        "assets/selena-black-3.jpg",
+        "assets/selena-black-4.jpg",
+        "assets/selena-black-5.jpg"
+      ],
+      "status": "Tampil"
+    },
+    {
+      "id": "sabria",
+      "name": "Sabria Shirt",
+      "category": "shirts",
+      "price": 369000,
+      "badge": "",
+      "colors": [
+        "White (#F2ECE1)"
+      ],
+      "sizes": "One Size",
+      "material": "Premium cotton blend",
+      "fit_details": "Bust 120 cm, length 70 cm, shoulder 44 cm, arm 44 cm, sleeve 62 cm, waist 120 cm, hips 120 cm. Measurements may vary by approx 1–2 cm. Unlined, non-sheer, no stretch.",
+      "description": "A blazer-inspired long-sleeve shirt designed to bring effortless elegance to your everyday wardrobe. Featuring functional front buttons, contrasting black piping and a removable black tie that adds a feminine touch — perfect for both casual and formal occasions.",
+      "care_instructions": "Handwash recommended. Do not bleach. Wash in cold water. Do not tumble dry.",
+      "image_front": "assets/sabria-white-1.jpg",
+      "image_back": "assets/sabria-white-2.jpg",
+      "gallery": [
+        "assets/sabria-white-1.jpg",
+        "assets/sabria-white-2.jpg",
+        "assets/sabria-white-3.jpg",
+        "assets/sabria-white-4.jpg",
+        "assets/sabria-white-5.jpg",
+        "assets/sabria-white-6.jpg"
+      ],
+      "status": "Tampil"
+    },
+    {
+      "id": "erina",
+      "name": "Erina Shirt",
+      "category": "shirts",
+      "price": 339000,
+      "badge": "",
+      "colors": [
+        "White (#F2ECE1)"
+      ],
+      "sizes": "One Size",
+      "material": "Premium cotton blend",
+      "fit_details": "Bust 140 cm, length 75 cm, shoulder 44 cm, arm 50 cm, sleeve 65 cm, waist 144 cm, hips 150 cm. Measurements may vary by approx 1–2 cm. Unlined, non-sheer, no stretch.",
+      "description": "Designed with a relaxed oversized silhouette, this long-sleeve shirt offers the perfect balance of comfort and timeless style. Front lace detailing adds a feminine touch while keeping a clean, elegant look. Perfect for both casual and formal occasions.",
+      "care_instructions": "Handwash recommended. Do not bleach. Wash in cold water. Do not tumble dry.",
+      "image_front": "assets/erina-white-1.jpg",
+      "image_back": "assets/erina-white-2.jpg",
+      "gallery": [
+        "assets/erina-white-1.jpg",
+        "assets/erina-white-2.jpg",
+        "assets/erina-white-3.jpg",
+        "assets/erina-white-4.jpg",
+        "assets/erina-white-5.jpg",
+        "assets/erina-white-6.jpg"
+      ],
+      "status": "Tampil"
+    },
+    {
+      "id": "aurellia",
+      "name": "Aurellia Shirt",
+      "category": "shirts",
+      "price": 369000,
+      "badge": "New",
+      "colors": [
+        "White (#F2ECE1)",
+        "Black (#241A1F)"
+      ],
+      "sizes": "One Size",
+      "material": "Premium cotton blend",
+      "fit_details": "Bust 124 cm, length 75 cm, shoulder 44 cm, arm 50 cm, sleeve 63 cm, waist 126 cm, hips 132 cm. Measurements may vary by approx 1–2 cm. Unlined, non-sheer, no stretch.",
+      "description": "A relaxed-fit shirt featuring soft puff sleeves and layered detailing across the front, creating a unique and effortlessly stylish look. Designed for both comfort and elegance — perfect for elevating your everyday wardrobe.",
+      "care_instructions": "Handwash recommended. Do not bleach. Wash in cold water. Do not tumble dry.",
+      "image_front": "assets/aurellia-white-1.jpg",
+      "image_back": "assets/aurellia-white-2.jpg",
+      "gallery": [
+        "assets/aurellia-white-1.jpg",
+        "assets/aurellia-white-2.jpg",
+        "assets/aurellia-white-3.jpg",
+        "assets/aurellia-white-4.jpg",
+        "assets/aurellia-white-5.jpg",
+        "assets/aurellia-white-6.jpg",
+        "assets/aurellia-black-1.jpg",
+        "assets/aurellia-black-2.jpg",
+        "assets/aurellia-black-3.jpg",
+        "assets/aurellia-black-4.jpg",
+        "assets/aurellia-black-5.jpg",
+        "assets/aurellia-black-6.jpg",
+        "assets/aurellia-black-7.jpg"
+      ],
+      "status": "Tampil"
+    },
+    {
+      "id": "camalia",
+      "name": "Camalia Satin Blouse",
+      "category": "blouses",
+      "price": 355000,
+      "badge": "Limited",
+      "colors": [
+        "Taupe (#B49C8A)"
+      ],
+      "sizes": "One Size",
+      "material": "Premium satin",
+      "fit_details": "Bust 120 cm, length 72 cm, shoulder 46 cm, arm 58 cm, sleeve 65 cm, waist 126 cm, hips 132 cm. Measurements may vary by approx 1–2 cm. Unlined, non-sheer, no stretch.",
+      "description": "A feminine premium satin blouse with a semi-cape silhouette and long sleeves. The sleeves are finished with elegant buttoned cuffs, adding a refined touch to the design. The perfect choice for formal occasions.",
+      "care_instructions": "Handwash recommended. Do not bleach. Wash in cold water. Do not tumble dry.",
+      "image_front": "assets/camalia-taupe-1.jpg",
+      "image_back": "assets/camalia-taupe-2.jpg",
+      "gallery": [
+        "assets/camalia-taupe-1.jpg",
+        "assets/camalia-taupe-2.jpg",
+        "assets/camalia-taupe-3.jpg",
+        "assets/camalia-taupe-4.jpg",
+        "assets/camalia-taupe-5.jpg",
+        "assets/camalia-taupe-6.jpg"
+      ],
+      "status": "Tampil"
+    },
+    {
+      "id": "vienna",
+      "name": "Vienna Shirt",
+      "category": "shirts",
+      "price": 319000,
+      "badge": "",
+      "colors": [
+        "White (#F2ECE1)",
+        "Navy (#2B2F3A)"
+      ],
+      "sizes": "One Size",
+      "material": "Premium cotton blend",
+      "fit_details": "Bust 120 cm, length 65 cm, shoulder 50 cm, arm 56 cm, sleeve 30 cm, waist 120 cm, hips 120 cm. Measurements may vary by approx 1–2 cm. Unlined, non-sheer, no stretch.",
+      "description": "An A-line short-sleeve shirt featuring delicate pleated details across the front for a relaxed yet polished look. Effortlessly stylish and comfortable — an ideal piece for everyday wear.",
+      "care_instructions": "Handwash recommended. Do not bleach. Wash in cold water. Do not tumble dry.",
+      "image_front": "assets/vienna-white-1.jpg",
+      "image_back": "assets/vienna-white-2.jpg",
+      "gallery": [
+        "assets/vienna-white-1.jpg",
+        "assets/vienna-white-2.jpg",
+        "assets/vienna-white-3.jpg",
+        "assets/vienna-white-4.jpg",
+        "assets/vienna-white-5.jpg",
+        "assets/vienna-white-6.jpg",
+        "assets/vienna-navy-1.jpg",
+        "assets/vienna-navy-2.jpg",
+        "assets/vienna-navy-3.jpg",
+        "assets/vienna-navy-4.jpg",
+        "assets/vienna-navy-5.jpg",
+        "assets/vienna-navy-6.jpg"
+      ],
+      "status": "Tampil"
+    }
+  ],
+  "faq": [
+    {
+      "no": 1,
+      "category": "Pengiriman",
+      "question": "Shipping",
+      "answer": "Please note that all orders are only shipped on working days. All orders placed before 04:00 p.m. will be processed on the same day. Orders received after 04:00 p.m. are processed on the next working day. When placing your order, please ensure all information concerning billing and delivery address is correct. After it has been dispatched, we will provide you with the tracking number as soon as possible."
+    },
+    {
+      "no": 2,
+      "category": "Pengembalian / Retur",
+      "question": "Exchange & Returns",
+      "answer": "If you wish to exchange, please send us WhatsApp to +62-818-0505-2929 and tell us your order number and reason for exchange as well as unboxing video. We will ask you to simply take your purchase to your local post office or use any instant courier/motorbike delivery to return the item. Once confirmed and we have received and checked the item, we will confirm you by whatsapp. If you have received a damaged item, we will exchange it with the same item. If the same item isn’t available, we will refund/credit your money back. When you wish to exchange an item with different item, you can only exchange with higher price item or might be the same price item."
+    },
+    {
+      "no": 3,
+      "category": "Panduan Ukuran",
+      "question": "Size Guide",
+      "answer": "Every piece at The Tale of Her is made in One Size, cut with a relaxed, oversized silhouette designed to fall loosely rather than fit close to the body.\n\nExact measurements (bust, length, shoulder, sleeve) are listed under \"Description & Fit\" on each product page — check there for the piece you're interested in."
+    },
+    {
+      "no": 4,
+      "category": "Karir / Lowongan",
+      "question": "Careers",
+      "answer": "No Open Positions\n\nThank you for your interest in joining The Tale of Her. We don't have any openings at the moment. Please check back soon for future career opportunities."
+    }
+  ]
+}

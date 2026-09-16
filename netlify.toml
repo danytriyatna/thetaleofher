@@ -1,0 +1,23 @@
+# thetaleofher — Netlify configuration
+
+[build]
+  publish = "."
+
+# Clean URLs: /katalog instead of /katalog.html
+[[redirects]]
+  from = "/catalog"
+  to = "/katalog.html"
+  status = 200
+
+[[redirects]]
+  from = "/product"
+  to = "/produk.html"
+  status = 200
+
+# Long cache for the pages (images are embedded, so bump this only when you redeploy)
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
