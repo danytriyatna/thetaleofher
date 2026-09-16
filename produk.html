@@ -301,10 +301,87 @@
 <script>
   const rp = n => (n && n > 0) ? 'Rp ' + n.toLocaleString('id-ID') : 'Price on request';
   const PRODUCTS = {
+    vittoria: {
+      name: "Vittoria Shirt",
+      price: 329000,
+      line: 'The Tale of Her · The Classics',
+      desc: "Elegant 3/4 sleeves and a statement collar bring a refined touch to this timeless silhouette. Designed with a relaxed fit for all-day comfort, it effortlessly combines sophistication with everyday ease.",
+      fit: "Length 68 cm, bust 148 cm, shoulder 44 cm, arm 38 cm, sleeve 44 cm. Measurements may vary by approx 1\u20132 cm. Unlined, non-sheer, no stretch.",
+      mat: "Premium cotton blend Handwash recommended. Do not bleach. Wash in cold water. Do not tumble dry.",
+      ship: 'Shipping: Orders placed before 04:00 p.m. will be processed on the same day.\n\nReturn: Exchanges accepted within 3 days with unboxing video via WhatsApp +62-818-0505-2929.',
+      shopeeLink: '',
+      colors: [ {name:'White', hex:'#F2ECE1', img:'assets/vittoria-white-1.jpg', shots:["assets/vittoria-white-1.jpg", "assets/vittoria-white-2.jpg", "assets/vittoria-white-3.jpg", "assets/vittoria-white-4.jpg", "assets/vittoria-white-5.jpg", "assets/vittoria-white-6.jpg"]}, {name:'Black', hex:'#241A1F', img:'assets/vittoria-black-1.jpg', shots:["assets/vittoria-black-1.jpg", "assets/vittoria-black-2.jpg", "assets/vittoria-black-3.jpg", "assets/vittoria-black-4.jpg", "assets/vittoria-black-5.jpg", "assets/vittoria-black-6.jpg"]} ]
+    },
+    selena: {
+      name: "Selena Shirt",
+      price: 329000,
+      line: 'The Tale of Her · The Classics',
+      desc: "Inspired by the kimono, this shirt features flexible elastic cuffs that let the sleeves be worn at different lengths for versatile styling. Finished with functional front buttons and patch pockets, it balances comfort, sophistication and modern style.",
+      fit: "Bust 126 cm, length 60 cm, shoulder 44 cm, arm 48 cm, sleeve 60 cm, waist 128 cm, hips 136 cm. Measurements may vary by approx 1\u20132 cm. Unlined, non-sheer, no stretch.",
+      mat: "Premium cotton blend Handwash recommended. Do not bleach. Wash in cold water. Do not tumble dry.",
+      ship: 'Shipping: Orders placed before 04:00 p.m. will be processed on the same day.\n\nReturn: Exchanges accepted within 3 days with unboxing video via WhatsApp +62-818-0505-2929.',
+      shopeeLink: '',
+      colors: [ {name:'White', hex:'#F2ECE1', img:'assets/selena-white-1.jpg', shots:["assets/selena-white-1.jpg", "assets/selena-white-2.jpg", "assets/selena-white-3.jpg", "assets/selena-white-4.jpg", "assets/selena-white-5.jpg", "assets/selena-white-6.jpg"]}, {name:'Black', hex:'#241A1F', img:'assets/selena-black-1.jpg', shots:["assets/selena-black-1.jpg", "assets/selena-black-2.jpg", "assets/selena-black-3.jpg", "assets/selena-black-4.jpg", "assets/selena-black-5.jpg"]} ]
+    },
+    sabria: {
+      name: "Sabria Shirt",
+      price: 369000,
+      line: 'The Tale of Her · The Classics',
+      desc: "A blazer-inspired long-sleeve shirt designed to bring effortless elegance to your everyday wardrobe. Featuring functional front buttons, contrasting black piping and a removable black tie that adds a feminine touch \u2014 perfect for both casual and formal occasions.",
+      fit: "Bust 120 cm, length 70 cm, shoulder 44 cm, arm 44 cm, sleeve 62 cm, waist 120 cm, hips 120 cm. Measurements may vary by approx 1\u20132 cm. Unlined, non-sheer, no stretch.",
+      mat: "Premium cotton blend Handwash recommended. Do not bleach. Wash in cold water. Do not tumble dry.",
+      ship: 'Shipping: Orders placed before 04:00 p.m. will be processed on the same day.\n\nReturn: Exchanges accepted within 3 days with unboxing video via WhatsApp +62-818-0505-2929.',
+      shopeeLink: '',
+      colors: [ {name:'White', hex:'#F2ECE1', img:'assets/sabria-white-1.jpg', shots:["assets/sabria-white-1.jpg", "assets/sabria-white-2.jpg", "assets/sabria-white-3.jpg", "assets/sabria-white-4.jpg", "assets/sabria-white-5.jpg", "assets/sabria-white-6.jpg"]} ]
+    },
+    erina: {
+      name: "Erina Shirt",
+      price: 339000,
+      line: 'The Tale of Her · The Classics',
+      desc: "Designed with a relaxed oversized silhouette, this long-sleeve shirt offers the perfect balance of comfort and timeless style. Front lace detailing adds a feminine touch while keeping a clean, elegant look. Perfect for both casual and formal occasions.",
+      fit: "Bust 140 cm, length 75 cm, shoulder 44 cm, arm 50 cm, sleeve 65 cm, waist 144 cm, hips 150 cm. Measurements may vary by approx 1\u20132 cm. Unlined, non-sheer, no stretch.",
+      mat: "Premium cotton blend Handwash recommended. Do not bleach. Wash in cold water. Do not tumble dry.",
+      ship: 'Shipping: Orders placed before 04:00 p.m. will be processed on the same day.\n\nReturn: Exchanges accepted within 3 days with unboxing video via WhatsApp +62-818-0505-2929.',
+      shopeeLink: '',
+      colors: [ {name:'White', hex:'#F2ECE1', img:'assets/erina-white-1.jpg', shots:["assets/erina-white-1.jpg", "assets/erina-white-2.jpg", "assets/erina-white-3.jpg", "assets/erina-white-4.jpg", "assets/erina-white-5.jpg", "assets/erina-white-6.jpg"]} ]
+    },
+    aurellia: {
+      name: "Aurellia Shirt",
+      price: 369000,
+      line: 'The Tale of Her · The Classics',
+      desc: "A relaxed-fit shirt featuring soft puff sleeves and layered detailing across the front, creating a unique and effortlessly stylish look. Designed for both comfort and elegance \u2014 perfect for elevating your everyday wardrobe.",
+      fit: "Bust 124 cm, length 75 cm, shoulder 44 cm, arm 50 cm, sleeve 63 cm, waist 126 cm, hips 132 cm. Measurements may vary by approx 1\u20132 cm. Unlined, non-sheer, no stretch.",
+      mat: "Premium cotton blend Handwash recommended. Do not bleach. Wash in cold water. Do not tumble dry.",
+      ship: 'Shipping: Orders placed before 04:00 p.m. will be processed on the same day.\n\nReturn: Exchanges accepted within 3 days with unboxing video via WhatsApp +62-818-0505-2929.',
+      shopeeLink: '',
+      colors: [ {name:'White', hex:'#F2ECE1', img:'assets/aurellia-white-1.jpg', shots:["assets/aurellia-white-1.jpg", "assets/aurellia-white-2.jpg", "assets/aurellia-white-3.jpg", "assets/aurellia-white-4.jpg", "assets/aurellia-white-5.jpg", "assets/aurellia-white-6.jpg"]}, {name:'Black', hex:'#241A1F', img:'assets/aurellia-black-1.jpg', shots:["assets/aurellia-black-1.jpg", "assets/aurellia-black-2.jpg", "assets/aurellia-black-3.jpg", "assets/aurellia-black-4.jpg", "assets/aurellia-black-5.jpg", "assets/aurellia-black-6.jpg", "assets/aurellia-black-7.jpg"]} ]
+    },
+    camalia: {
+      name: "Camalia Satin Blouse",
+      price: 355000,
+      line: 'The Tale of Her · The Classics',
+      desc: "A feminine premium satin blouse with a semi-cape silhouette and long sleeves. The sleeves are finished with elegant buttoned cuffs, adding a refined touch to the design. The perfect choice for formal occasions.",
+      fit: "Bust 120 cm, length 72 cm, shoulder 46 cm, arm 58 cm, sleeve 65 cm, waist 126 cm, hips 132 cm. Measurements may vary by approx 1\u20132 cm. Unlined, non-sheer, no stretch.",
+      mat: "Premium satin Handwash recommended. Do not bleach. Wash in cold water. Do not tumble dry.",
+      ship: 'Shipping: Orders placed before 04:00 p.m. will be processed on the same day.\n\nReturn: Exchanges accepted within 3 days with unboxing video via WhatsApp +62-818-0505-2929.',
+      shopeeLink: '',
+      colors: [ {name:'Taupe', hex:'#B49C8A', img:'assets/camalia-taupe-1.jpg', shots:["assets/camalia-taupe-1.jpg", "assets/camalia-taupe-2.jpg", "assets/camalia-taupe-3.jpg", "assets/camalia-taupe-4.jpg", "assets/camalia-taupe-5.jpg", "assets/camalia-taupe-6.jpg"]} ]
+    },
+    vienna: {
+      name: "Vienna Shirt",
+      price: 319000,
+      line: 'The Tale of Her · The Classics',
+      desc: "An A-line short-sleeve shirt featuring delicate pleated details across the front for a relaxed yet polished look. Effortlessly stylish and comfortable \u2014 an ideal piece for everyday wear.",
+      fit: "Bust 120 cm, length 65 cm, shoulder 50 cm, arm 56 cm, sleeve 30 cm, waist 120 cm, hips 120 cm. Measurements may vary by approx 1\u20132 cm. Unlined, non-sheer, no stretch.",
+      mat: "Premium cotton blend Handwash recommended. Do not bleach. Wash in cold water. Do not tumble dry.",
+      ship: 'Shipping: Orders placed before 04:00 p.m. will be processed on the same day.\n\nReturn: Exchanges accepted within 3 days with unboxing video via WhatsApp +62-818-0505-2929.',
+      shopeeLink: '',
+      colors: [ {name:'White', hex:'#F2ECE1', img:'assets/vienna-white-1.jpg', shots:["assets/vienna-white-1.jpg", "assets/vienna-white-2.jpg", "assets/vienna-white-3.jpg", "assets/vienna-white-4.jpg", "assets/vienna-white-5.jpg", "assets/vienna-white-6.jpg"]}, {name:'Navy', hex:'#2B2F3A', img:'assets/vienna-navy-1.jpg', shots:["assets/vienna-navy-1.jpg", "assets/vienna-navy-2.jpg", "assets/vienna-navy-3.jpg", "assets/vienna-navy-4.jpg", "assets/vienna-navy-5.jpg", "assets/vienna-navy-6.jpg"]} ]
+    },
     helma: {
       name: "Helma Shirt",
       price: 366000,
-      line: 'The Tale of Her · The Summer Capsule',
+      line: 'The Tale of Her · The Classics',
       desc: "Designed with a little sweeter with ribbon accent, this long-sleeve shirt offers the perfect balance of comfort and timeless style. Front lace detailing adds a feminine touch while keeping a clean, elegant look. Perfect for both casual and formal occasions.",
       fit: "Length 74 cm, bust 120 cm. Measurements may vary by approx 1\u20132 cm. Unlined, non-sheer, no stretch.",
       mat: "Premium cotton blend Handwash recommended. Do not bleach. Wash in cold water. Do not tumble dry.",
@@ -315,7 +392,7 @@
     carolina: {
       name: "Carolina Shirt",
       price: 365000,
-      line: 'The Tale of Her · The Summer Capsule',
+      line: 'The Tale of Her · The Classics',
       desc: "Inspired by the kimono, this shirt features flexible elastic cuffs that let the sleeves be worn at different lengths for versatile styling. Finished with functional front buttons and patch pockets, it balances comfort, sophistication and modern style.",
       fit: "Bust 120 cm, length 63 cm. Measurements may vary by approx 1\u20132 cm. Unlined, non-sheer, no stretch.",
       mat: "Premium cotton blend Handwash recommended. Do not bleach. Wash in cold water. Do not tumble dry.",
@@ -326,7 +403,7 @@
     adriana: {
       name: "Adriana Outer",
       price: 450000,
-      line: 'The Tale of Her · The Summer Capsule',
+      line: 'The Tale of Her · The Classics',
       desc: "A blazer-inspired long-sleeve shirt designed to bring effortless elegance to your everyday wardrobe. Featuring functional front buttons, contrasting black piping and a removable black tie that adds a feminine touch \u2014 perfect for both casual and formal occasions.",
       fit: "Size S-M : Bust 95 cm, length 55 cm. Size L : Bust 100 cm, length 55 cm.                                                                          Measurements may vary by approx 1\u20132 cm. Unlined, non-sheer, no stretch.",
       mat: "High Twist Handwash recommended. Do not bleach. Wash in cold water. Do not tumble dry.",
@@ -337,7 +414,7 @@
     franca: {
       name: "Franca Blouse",
       price: 345000,
-      line: 'The Tale of Her · The Summer Capsule',
+      line: 'The Tale of Her · The Classics',
       desc: "Designed with a relaxed oversized silhouette, this long-sleeve shirt offers the perfect balance of comfort and timeless style. Front lace detailing adds a feminine touch while keeping a clean, elegant look. Perfect for both casual and formal occasions.",
       fit: "Bust 120 cm, length 63 cm. Measurements may vary by approx 1\u20132 cm. Unlined, non-sheer, no stretch.",
       mat: "Premium Shakilla Handwash recommended. Do not bleach. Wash in cold water. Do not tumble dry.",
@@ -348,7 +425,7 @@
     sovia: {
       name: "Sovia Blouse",
       price: 348000,
-      line: 'The Tale of Her · The Summer Capsule',
+      line: 'The Tale of Her · The Classics',
       desc: "A relaxed-fit shirt featuring soft puff sleeves and layered detailing across the front, creating a unique and effortlessly stylish look. Designed for both comfort and elegance \u2014 perfect for elevating your everyday wardrobe.",
       fit: "Size S-M : Bust 95cm, length 63 cm. Size L-XL : Bust 120cm, length 70 cm.                                            Measurements may vary by approx 1\u20132 cm. Unlined, non-sheer, no stretch.",
       mat: "Premium Shakilla Handwash recommended. Do not bleach. Wash in cold water. Do not tumble dry.",
@@ -359,7 +436,7 @@
     catharina: {
       name: "Catharina Shirt",
       price: 352000,
-      line: 'The Tale of Her · The Summer Capsule',
+      line: 'The Tale of Her · The Classics',
       desc: "A feminine premium satin blouse with a semi-cape silhouette and long sleeves. The sleeves are finished with elegant buttoned cuffs, adding a refined touch to the design. The perfect choice for formal occasions.",
       fit: "Bust 100 cm, length 65 cm. Measurements may vary by approx 1\u20132 cm. Unlined, non-sheer, no stretch.",
       mat: "Premium satin Handwash recommended. Do not bleach. Wash in cold water. Do not tumble dry.",
@@ -370,7 +447,7 @@
     mariana: {
       name: "Mariana Shirt",
       price: 315000,
-      line: 'The Tale of Her · The Summer Capsule',
+      line: 'The Tale of Her · The Classics',
       desc: "An A-line short-sleeve shirt featuring delicate pleated details across the front for a relaxed yet polished look. Effortlessly stylish and comfortable \u2014 an ideal piece for everyday wear.",
       fit: "Bust 120 cm, length 65 cm. Measurements may vary by approx 1\u20132 cm. Unlined, non-sheer, no stretch.",
       mat: "Premium satin Handwash recommended. Do not bleach. Wash in cold water. Do not tumble dry.",
@@ -381,7 +458,7 @@
     emily: {
       name: "Emily Vest",
       price: 442000,
-      line: 'The Tale of Her · The Summer Capsule',
+      line: 'The Tale of Her · The Classics',
       desc: "An A-line short-sleeve shirt featuring delicate pleated details across the front for a relaxed yet polished look. Effortlessly stylish and comfortable \u2014 an ideal piece for everyday wear.",
       fit: "Bust 126 cm, length 75 cm. Measurements may vary by approx 1\u20132 cm. Unlined, non-sheer, no stretch.",
       mat: "Premium Semi Wool Handwash recommended. Do not bleach. Wash in cold water. Do not tumble dry.",
@@ -392,7 +469,7 @@
     olivia: {
       name: "Olivia Vest",
       price: 475000,
-      line: 'The Tale of Her · The Summer Capsule',
+      line: 'The Tale of Her · The Classics',
       desc: "An A-line short-sleeve shirt featuring delicate pleated details across the front for a relaxed yet polished look. Effortlessly stylish and comfortable \u2014 an ideal piece for everyday wear.",
       fit: "Bust 120 cm, length 80 cm. Measurements may vary by approx 1\u20132 cm. Unlined, non-sheer, no stretch.",
       mat: "premium linen mix with premium cotton blend Handwash recommended. Do not bleach. Wash in cold water. Do not tumble dry.",
@@ -402,6 +479,17 @@
     }
   };
   const RELATED = [
+    {id:'vittoria', c:0, name:'Vittoria Shirt', color:'White', price:329000, img:'assets/vittoria-white-1.jpg'},
+    {id:'vittoria', c:1, name:'Vittoria Shirt', color:'Black', price:329000, img:'assets/vittoria-black-1.jpg'},
+    {id:'selena', c:0, name:'Selena Shirt', color:'White', price:329000, img:'assets/selena-white-1.jpg'},
+    {id:'selena', c:1, name:'Selena Shirt', color:'Black', price:329000, img:'assets/selena-black-1.jpg'},
+    {id:'sabria', c:0, name:'Sabria Shirt', color:'White', price:369000, img:'assets/sabria-white-1.jpg'},
+    {id:'erina', c:0, name:'Erina Shirt', color:'White', price:339000, img:'assets/erina-white-1.jpg'},
+    {id:'aurellia', c:0, name:'Aurellia Shirt', color:'White', price:369000, img:'assets/aurellia-white-1.jpg'},
+    {id:'aurellia', c:1, name:'Aurellia Shirt', color:'Black', price:369000, img:'assets/aurellia-black-1.jpg'},
+    {id:'camalia', c:0, name:'Camalia Satin Blouse', color:'Taupe', price:355000, img:'assets/camalia-taupe-1.jpg'},
+    {id:'vienna', c:0, name:'Vienna Shirt', color:'White', price:319000, img:'assets/vienna-white-1.jpg'},
+    {id:'vienna', c:1, name:'Vienna Shirt', color:'Navy', price:319000, img:'assets/vienna-navy-1.jpg'},
     {id:'helma', c:0, name:'Helma Shirt', color:'Light Blue', price:366000, img:'assets/helma-shirt-1.jpg'},
     {id:'carolina', c:0, name:'Carolina Shirt', color:'Ivory', price:365000, img:'assets/carolina-shirt-1.jpg'},
     {id:'adriana', c:0, name:'Adriana Outer', color:'Army', price:450000, img:'assets/adriana-outer-1.jpg'},
@@ -414,7 +502,7 @@
   ];
 
   const params = new URLSearchParams(location.search);
-  const id = PRODUCTS[params.get('id')] ? params.get('id') : 'helma';
+  const id = PRODUCTS[params.get('id')] ? params.get('id') : 'vittoria';
   let cidx = parseInt(params.get('c')||'0'); if(isNaN(cidx)||cidx<0) cidx=0;
   const P = PRODUCTS[id]; if(cidx>=P.colors.length) cidx=0;
 

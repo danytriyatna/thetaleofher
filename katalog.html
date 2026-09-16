@@ -184,7 +184,7 @@
   <div class="toolbar">
     <div class="max-w-[1440px] mx-auto px-6 py-4 flex items-center justify-between gap-4">
       <!-- categories -->
-      <div class="flex items-center gap-2.5 overflow-x-auto no-scrollbar"><button class="chip active" data-cat="all">All</button><button class="chip" data-cat="shirts">Shirts</button><button class="chip" data-cat="outer">Outer</button><button class="chip" data-cat="blouse">Blouse</button><button class="chip" data-cat="vest">Vest</button></div>
+      <div class="flex items-center gap-2.5 overflow-x-auto no-scrollbar"><button class="chip active" data-cat="all">All</button><button class="chip" data-cat="shirts">Shirts</button><button class="chip" data-cat="blouses">Blouses</button><button class="chip" data-cat="outer">Outer</button><button class="chip" data-cat="blouse">Blouse</button><button class="chip" data-cat="vest">Vest</button></div>
       <!-- right controls -->
       <div class="flex items-center gap-5 shrink-0">
         <div class="hidden sm:flex items-center gap-3">
@@ -256,15 +256,26 @@
   const rp = (n) => (n && n > 0) ? 'Rp ' + n.toLocaleString('id-ID') : 'Price on request';
 
   const products = [
-    {name:'Helma Shirt', color:'Light Blue', price:366000, cat:'shirts', tag:'New', fu:'assets/helma-shirt-1.jpg', bu:'assets/helma-shirt-2.jpg', href:'produk.html?id=helma&c=0', sw:['#ADC7D9'], imgs:['assets/helma-shirt-1.jpg']},
-    {name:'Carolina Shirt', color:'Ivory', price:365000, cat:'shirts', tag:'New', fu:'assets/carolina-shirt-1.jpg', bu:'assets/carolina-shirt-2.jpg', href:'produk.html?id=carolina&c=0', sw:['#F5EFE6'], imgs:['assets/carolina-shirt-1.jpg']},
-    {name:'Adriana Outer', color:'Army', price:450000, cat:'outer', tag:'Limited', fu:'assets/adriana-outer-1.jpg', bu:'assets/adriana-outer-2.jpg', href:'produk.html?id=adriana&c=0', sw:['#555E4C'], imgs:['assets/adriana-outer-1.jpg']},
-    {name:'Franca Blouse', color:'White', price:345000, cat:'blouse', tag:'New', fu:'assets/franca-blouse-1.jpg', bu:'assets/franca-blouse-2.jpg', href:'produk.html?id=franca&c=0', sw:['#FAF6F1'], imgs:['assets/franca-blouse-1.jpg']},
-    {name:'Sovia Blouse', color:'Black', price:348000, cat:'blouse', tag:'New', fu:'assets/sovia-blouse-1.jpg', bu:'assets/sovia-blouse-2.jpg', href:'produk.html?id=sovia&c=0', sw:['#241A1F'], imgs:['assets/sovia-blouse-1.jpg']},
-    {name:'Catharina Shirt', color:'White', price:352000, cat:'shirts', tag:'New', fu:'assets/catharina-shirt-1.jpg', bu:'assets/catharina-shirt-2.jpg', href:'produk.html?id=catharina&c=0', sw:['#FAF6F1'], imgs:['assets/catharina-shirt-1.jpg']},
-    {name:'Mariana Shirt', color:'Black', price:315000, cat:'shirts', tag:'New', fu:'assets/mariana-shirt-1.jpg', bu:'assets/mariana-shirt-2.jpg', href:'produk.html?id=mariana&c=0', sw:['#241A1F'], imgs:['assets/mariana-shirt-1.jpg']},
-    {name:'Emily Vest', color:'White', price:442000, cat:'vest', tag:'New', fu:'assets/emily-vest-1.jpg', bu:'assets/emily-vest-2.jpg', href:'produk.html?id=emily&c=0', sw:['#FAF6F1'], imgs:['assets/emily-vest-1.jpg']},
-    {name:'Olivia Vest', color:'Cream Olive', price:475000, cat:'vest', tag:'New', fu:'assets/olivia-vest-1.jpg', bu:'assets/olivia-vest-2.jpg', href:'produk.html?id=olivia&c=0', sw:['#C2BAA6'], imgs:['assets/olivia-vest-1.jpg']}
+    {name:'Vittoria Shirt', color:'White', price:329000, cat:'shirts', tag:'New', fu:'assets/vittoria-white-1.jpg', bu:'assets/vittoria-white-2.jpg', href:'produk.html?id=vittoria&c=0', sw:["#F2ECE1", "#241A1F"], imgs:["assets/vittoria-white-1.jpg", "assets/vittoria-black-1.jpg"]},
+    {name:'Vittoria Shirt', color:'Black', price:329000, cat:'shirts', tag:'New', fu:'assets/vittoria-black-1.jpg', bu:'assets/vittoria-black-2.jpg', href:'produk.html?id=vittoria&c=1', sw:["#F2ECE1", "#241A1F"], imgs:["assets/vittoria-white-1.jpg", "assets/vittoria-black-1.jpg"]},
+    {name:'Selena Shirt', color:'White', price:329000, cat:'shirts', tag:'New', fu:'assets/selena-white-1.jpg', bu:'assets/selena-white-2.jpg', href:'produk.html?id=selena&c=0', sw:["#F2ECE1", "#241A1F"], imgs:["assets/selena-white-1.jpg", "assets/selena-black-1.jpg"]},
+    {name:'Selena Shirt', color:'Black', price:329000, cat:'shirts', tag:'New', fu:'assets/selena-black-1.jpg', bu:'assets/selena-black-2.jpg', href:'produk.html?id=selena&c=1', sw:["#F2ECE1", "#241A1F"], imgs:["assets/selena-white-1.jpg", "assets/selena-black-1.jpg"]},
+    {name:'Sabria Shirt', color:'White', price:369000, cat:'shirts', fu:'assets/sabria-white-1.jpg', bu:'assets/sabria-white-2.jpg', href:'produk.html?id=sabria&c=0', sw:["#F2ECE1"], imgs:["assets/sabria-white-1.jpg"]},
+    {name:'Erina Shirt', color:'White', price:339000, cat:'shirts', fu:'assets/erina-white-1.jpg', bu:'assets/erina-white-2.jpg', href:'produk.html?id=erina&c=0', sw:["#F2ECE1"], imgs:["assets/erina-white-1.jpg"]},
+    {name:'Aurellia Shirt', color:'White', price:369000, cat:'shirts', tag:'New', fu:'assets/aurellia-white-1.jpg', bu:'assets/aurellia-white-2.jpg', href:'produk.html?id=aurellia&c=0', sw:["#F2ECE1", "#241A1F"], imgs:["assets/aurellia-white-1.jpg", "assets/aurellia-black-1.jpg"]},
+    {name:'Aurellia Shirt', color:'Black', price:369000, cat:'shirts', tag:'New', fu:'assets/aurellia-black-1.jpg', bu:'assets/aurellia-black-2.jpg', href:'produk.html?id=aurellia&c=1', sw:["#F2ECE1", "#241A1F"], imgs:["assets/aurellia-white-1.jpg", "assets/aurellia-black-1.jpg"]},
+    {name:'Camalia Satin Blouse', color:'Taupe', price:355000, cat:'blouses', tag:'Limited', fu:'assets/camalia-taupe-1.jpg', bu:'assets/camalia-taupe-2.jpg', href:'produk.html?id=camalia&c=0', sw:["#B49C8A"], imgs:["assets/camalia-taupe-1.jpg"]},
+    {name:'Vienna Shirt', color:'White', price:319000, cat:'shirts', fu:'assets/vienna-white-1.jpg', bu:'assets/vienna-white-2.jpg', href:'produk.html?id=vienna&c=0', sw:["#F2ECE1", "#2B2F3A"], imgs:["assets/vienna-white-1.jpg", "assets/vienna-navy-1.jpg"]},
+    {name:'Vienna Shirt', color:'Navy', price:319000, cat:'shirts', fu:'assets/vienna-navy-1.jpg', bu:'assets/vienna-navy-2.jpg', href:'produk.html?id=vienna&c=1', sw:["#F2ECE1", "#2B2F3A"], imgs:["assets/vienna-white-1.jpg", "assets/vienna-navy-1.jpg"]},
+    {name:'Helma Shirt', color:'Light Blue', price:366000, cat:'shirts', tag:'New', fu:'assets/helma-shirt-1.jpg', bu:'assets/helma-shirt-2.jpg', href:'produk.html?id=helma&c=0', sw:["#ADC7D9"], imgs:["assets/helma-shirt-1.jpg"]},
+    {name:'Carolina Shirt', color:'Ivory', price:365000, cat:'shirts', tag:'New', fu:'assets/carolina-shirt-1.jpg', bu:'assets/carolina-shirt-2.jpg', href:'produk.html?id=carolina&c=0', sw:["#F5EFE6"], imgs:["assets/carolina-shirt-1.jpg"]},
+    {name:'Adriana Outer', color:'Army', price:450000, cat:'outer', tag:'Limited', fu:'assets/adriana-outer-1.jpg', bu:'assets/adriana-outer-2.jpg', href:'produk.html?id=adriana&c=0', sw:["#555E4C"], imgs:["assets/adriana-outer-1.jpg"]},
+    {name:'Franca Blouse', color:'White', price:345000, cat:'blouse', tag:'New', fu:'assets/franca-blouse-1.jpg', bu:'assets/franca-blouse-2.jpg', href:'produk.html?id=franca&c=0', sw:["#FAF6F1"], imgs:["assets/franca-blouse-1.jpg"]},
+    {name:'Sovia Blouse', color:'Black', price:348000, cat:'blouse', tag:'New', fu:'assets/sovia-blouse-1.jpg', bu:'assets/sovia-blouse-2.jpg', href:'produk.html?id=sovia&c=0', sw:["#241A1F"], imgs:["assets/sovia-blouse-1.jpg"]},
+    {name:'Catharina Shirt', color:'White', price:352000, cat:'shirts', tag:'New', fu:'assets/catharina-shirt-1.jpg', bu:'assets/catharina-shirt-2.jpg', href:'produk.html?id=catharina&c=0', sw:["#FAF6F1"], imgs:["assets/catharina-shirt-1.jpg"]},
+    {name:'Mariana Shirt', color:'Black', price:315000, cat:'shirts', tag:'New', fu:'assets/mariana-shirt-1.jpg', bu:'assets/mariana-shirt-2.jpg', href:'produk.html?id=mariana&c=0', sw:["#241A1F"], imgs:["assets/mariana-shirt-1.jpg"]},
+    {name:'Emily Vest', color:'White', price:442000, cat:'vest', tag:'New', fu:'assets/emily-vest-1.jpg', bu:'assets/emily-vest-2.jpg', href:'produk.html?id=emily&c=0', sw:["#FAF6F1"], imgs:["assets/emily-vest-1.jpg"]},
+    {name:'Olivia Vest', color:'Cream Olive', price:475000, cat:'vest', tag:'New', fu:'assets/olivia-vest-1.jpg', bu:'assets/olivia-vest-2.jpg', href:'produk.html?id=olivia&c=0', sw:["#C2BAA6"], imgs:["assets/olivia-vest-1.jpg"]}
   ];
 
   const grid = document.getElementById('grid');

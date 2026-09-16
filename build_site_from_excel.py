@@ -2,12 +2,18 @@ import openpyxl
 import json
 import re
 import os
+import shutil
 
+EXCEL_SRC = r'C:\Users\DTProject\Documents\Git\thetaleofher\Update\thetaleofher_content_template.xlsx'
 EXCEL_FILE = r'C:\Users\DTProject\Documents\Git\thetaleofher\thetaleofher_content_template.xlsx'
 INDEX_FILE = r'C:\Users\DTProject\Documents\Git\thetaleofher\index.html'
 KATALOG_FILE = r'C:\Users\DTProject\Documents\Git\thetaleofher\katalog.html'
 PRODUK_FILE = r'C:\Users\DTProject\Documents\Git\thetaleofher\produk.html'
 SITEMAP_FILE = r'C:\Users\DTProject\Documents\Git\thetaleofher\sitemap.xml'
+
+# Copy updated Excel from Update folder to root
+if os.path.exists(EXCEL_SRC):
+    shutil.copy2(EXCEL_SRC, EXCEL_FILE)
 
 COLOR_HEX_MAP = {
     'light blue': '#ADC7D9',
@@ -20,25 +26,40 @@ COLOR_HEX_MAP = {
     'navy': '#2B2F3A'
 }
 
-def get_color_hex(color_name):
-    clean_name = color_name.strip().lower()
-    for k, v in COLOR_HEX_MAP.items():
-        if k in clean_name:
-            return v
-    return '#E5DCD3'
+def parse_colors_str(colors_str):
+    """
+    Parses strings like:
+    'White (#F2ECE1), Black (#241A1F)' -> [{'name': 'White', 'hex': '#F2ECE1'}, {'name': 'Black', 'hex': '#241A1F'}]
+    'Light Blue' -> [{'name': 'Light Blue', 'hex': '#ADC7D9'}]
+    """
+    if not colors_str:
+        return [{'name': 'Standard', 'hex': '#E5DCD3'}]
+        
+    parts = [p.strip() for p in colors_str.split(',') if p.strip()]
+    results = []
+    
+    for p in parts:
+        # Check for (#HEX)
+        hex_match = re.search(r'#([0-9a-fA-F]{6}|[0-9a-fA-F]{3})', p)
+        if hex_match:
+            hex_val = '#' + hex_match.group(1).upper()
+            cname = re.sub(r'\(#.*?\)', '', p).strip()
+        else:
+            cname = p.strip()
+            # lookup in map
+            hex_val = '#E5DCD3'
+            for k, v in COLOR_HEX_MAP.items():
+                if k in cname.lower():
+                    hex_val = v
+                    break
+        results.append({'name': cname, 'hex': hex_val})
+        
+    return results if results else [{'name': 'Standard', 'hex': '#E5DCD3'}]
 
 def build():
     print("Loading Excel template...")
     wb = openpyxl.load_workbook(EXCEL_FILE, data_only=True)
     
-    # 1. Read General Info
-    gen_info = {}
-    ws_gen = wb['General_Info']
-    for r in ws_gen.iter_rows(min_row=2, values_only=True):
-        if r[0]:
-            gen_info[str(r[0]).strip()] = str(r[2] or '').strip()
-
-    # 2. Read Products
     ws_prod = wb['Products']
     products = []
     for r in ws_prod.iter_rows(min_row=2, values_only=True):
@@ -48,7 +69,7 @@ def build():
             cat = str(r[2] or '').strip().lower()
             price = int(r[3]) if r[3] else 0
             tag = str(r[4] or '').strip()
-            color_str = str(r[5] or '').strip()
+            color_raw = str(r[5] or '').strip()
             sizing = str(r[6] or 'One Size').strip()
             material = str(r[7] or '').strip()
             fit = str(r[8] or '').strip()
@@ -60,13 +81,29 @@ def build():
             gallery = [g.strip() for g in gallery_str.split(',') if g.strip()]
             status = str(r[14] or 'Tampil').strip()
             
-            if not gallery and front_img:
-                gallery = [front_img]
-            if back_img and back_img not in gallery:
-                gallery.insert(1, back_img)
-                
-            color_name = color_str if color_str else 'Standard'
-            hex_code = get_color_hex(color_name)
+            parsed_colors = parse_colors_str(color_raw)
+            
+            # Map gallery shots per color
+            color_objs = []
+            for c_idx, c_info in enumerate(parsed_colors):
+                c_name_slug = c_info['name'].lower().replace(' ', '')
+                # Filter shots matching color name
+                matched_shots = [img for img in gallery if c_name_slug in img.lower()]
+                if not matched_shots:
+                    if len(parsed_colors) == 1:
+                        matched_shots = gallery if gallery else [front_img]
+                    else:
+                        # Split gallery evenly if not matched
+                        chunk_size = max(1, len(gallery) // len(parsed_colors))
+                        matched_shots = gallery[c_idx*chunk_size : (c_idx+1)*chunk_size]
+                        
+                c_front = matched_shots[0] if matched_shots else front_img
+                color_objs.append({
+                    'name': c_info['name'],
+                    'hex': c_info['hex'],
+                    'img': c_front,
+                    'shots': matched_shots if matched_shots else [c_front]
+                })
 
             products.append({
                 'id': pid,
@@ -74,41 +111,37 @@ def build():
                 'cat': cat,
                 'price': price,
                 'tag': tag,
-                'color': color_name,
-                'hex': hex_code,
+                'colors': color_objs,
                 'sizing': sizing,
                 'material': material,
                 'fit': fit,
                 'desc': desc,
                 'care': care,
-                'front_img': front_img,
-                'back_img': back_img if back_img else front_img,
-                'gallery': gallery,
                 'status': status
             })
 
     print(f"Loaded {len(products)} products from Excel.")
 
     # -------------------------------------------------------------
-    # A. UPDATE INDEX.HTML
+    # A. UPDATE INDEX.HTML (Featured Grid)
     # -------------------------------------------------------------
     print("Updating index.html...")
     with open(INDEX_FILE, 'r', encoding='utf-8') as f:
         idx_content = f.read()
 
-    # Build 4 featured products for homepage
     featured = products[:4]
     feat_html_list = []
     delays = ['', 'd1', 'd2', 'd3']
     for i, p in enumerate(featured):
         d_class = delays[i] if i < len(delays) else ''
+        first_color = p['colors'][0]
         feat_card = f'''      <a href="produk.html?id={p['id']}&c=0" class="prod reveal {d_class} group block">
         <div class="relative overflow-hidden aspect-[3/4] bg-[var(--paper-2)]">
-          <img src="{p['front_img']}" alt="{p['name']} {p['color']}" class="w-full h-full object-cover object-top">
+          <img src="{first_color['img']}" alt="{p['name']} {first_color['name']}" class="w-full h-full object-cover object-top">
           <span class="quick absolute bottom-3 left-1/2 -translate-x-1/2 bg-[var(--paper)]/95 text-[var(--ink)] text-[10px] t2 uppercase px-5 py-2.5 whitespace-nowrap">View Details</span>
         </div>
         <div class="flex items-start justify-between mt-4">
-          <div><h4 class="f text-lg leading-tight">{p['name']}</h4><p class="text-[12px] text-[var(--stone)] mt-0.5">{p['color']}</p></div>
+          <div><h4 class="f text-lg leading-tight">{p['name']}</h4><p class="text-[12px] text-[var(--stone)] mt-0.5">{first_color['name']}</p></div>
           <p class="text-[13px] whitespace-nowrap">Rp {p['price']:,}</p>
         </div>
       </a>'''
@@ -142,7 +175,6 @@ def build():
         cat_chips.append(f'<button class="chip" data-cat="{c}">{c.title()}</button>')
     cat_chips_html = ''.join(cat_chips)
 
-    # Replace category chips in toolbar
     kat_content = re.sub(
         r'<div class="flex items-center gap-2\.5 overflow-x-auto no-scrollbar">.*?</div>',
         lambda m: f'<div class="flex items-center gap-2.5 overflow-x-auto no-scrollbar">{cat_chips_html}</div>',
@@ -150,16 +182,24 @@ def build():
     )
 
     # Build products JS array for katalog.html
+    # For each color variant, create a catalog entry
     js_prods = []
     for p in products:
-        tag_prop = f"tag:'{p['tag']}', " if p['tag'] else ""
-        js_prods.append(
-            f"    {{name:'{p['name']}', color:'{p['color']}', price:{p['price']}, cat:'{p['cat']}', {tag_prop}fu:'{p['front_img']}', bu:'{p['back_img']}', href:'produk.html?id={p['id']}&c=0', sw:['{p['hex']}'], imgs:['{p['front_img']}']}}"
-        )
+        all_swatches = [c['hex'] for c in p['colors']]
+        all_main_imgs = [c['img'] for c in p['colors']]
+        
+        for c_idx, c in enumerate(p['colors']):
+            fu = c['img']
+            bu = c['shots'][1] if len(c['shots']) > 1 else fu
+            tag_prop = f"tag:'{p['tag']}', " if p['tag'] else ""
+            sw_json = json.dumps(all_swatches)
+            imgs_json = json.dumps(all_main_imgs)
+            
+            entry = f"    {{name:'{p['name']}', color:'{c['name']}', price:{p['price']}, cat:'{p['cat']}', {tag_prop}fu:'{fu}', bu:'{bu}', href:'produk.html?id={p['id']}&c={c_idx}', sw:{sw_json}, imgs:{imgs_json}}}"
+            js_prods.append(entry)
+
     js_prods_str = 'const products = [\n' + ',\n'.join(js_prods) + '\n  ];'
 
-    # Replace script section in katalog.html
-    # Find from <script> to const grid =
     script_start_idx = kat_content.find('<script>')
     grid_idx = kat_content.find('const grid = document.getElementById(\'grid\');')
     if script_start_idx != -1 and grid_idx != -1:
@@ -176,7 +216,7 @@ def build():
 
     with open(KATALOG_FILE, 'w', encoding='utf-8') as f:
         f.write(kat_content)
-    print("[OK] katalog.html updated.")
+    print(f"[OK] katalog.html updated ({len(js_prods)} catalog cards generated for {len(products)} products).")
 
     # -------------------------------------------------------------
     # C. UPDATE PRODUK.HTML
@@ -185,13 +225,19 @@ def build():
     with open(PRODUK_FILE, 'r', encoding='utf-8') as f:
         prd_content = f.read()
 
-    # Build PRODUCTS dictionary for produk.html
     prod_dict_entries = []
     related_entries = []
 
     for p in products:
-        shots_json = json.dumps(p['gallery'])
-        color_obj = f"{{name:'{p['color']}', hex:'{p['hex']}', img:'{p['front_img']}', shots:{shots_json}}}"
+        colors_json_parts = []
+        for c_idx, c in enumerate(p['colors']):
+            shots_json = json.dumps(c['shots'])
+            colors_json_parts.append(f"{{name:'{c['name']}', hex:'{c['hex']}', img:'{c['img']}', shots:{shots_json}}}")
+            related_entries.append(
+                f"    {{id:'{p['id']}', c:{c_idx}, name:'{p['name']}', color:'{c['name']}', price:{p['price']}, img:'{c['img']}'}}"
+            )
+            
+        colors_arr_str = "[ " + ", ".join(colors_json_parts) + " ]"
         mat_text = p['material']
         if p['care']:
             mat_text += f" {p['care']}"
@@ -199,23 +245,19 @@ def build():
         entry = f"""    {p['id']}: {{
       name: {json.dumps(p['name'])},
       price: {p['price']},
-      line: 'The Tale of Her · The Summer Capsule',
+      line: 'The Tale of Her · The Classics',
       desc: {json.dumps(p['desc'])},
       fit: {json.dumps(p['fit'])},
       mat: {json.dumps(mat_text)},
       ship: 'Shipping: Orders placed before 04:00 p.m. will be processed on the same day.\\n\\nReturn: Exchanges accepted within 3 days with unboxing video via WhatsApp +62-818-0505-2929.',
       shopeeLink: '',
-      colors: [ {color_obj} ]
+      colors: {colors_arr_str}
     }}"""
         prod_dict_entries.append(entry)
-        related_entries.append(
-            f"    {{id:'{p['id']}', c:0, name:'{p['name']}', color:'{p['color']}', price:{p['price']}, img:'{p['front_img']}'}}"
-        )
 
     products_obj_str = "const PRODUCTS = {\n" + ",\n".join(prod_dict_entries) + "\n  };"
     related_obj_str = "const RELATED = [\n" + ",\n".join(related_entries) + "\n  ];"
 
-    # Replace from <script> to const params = in produk.html
     p_script_idx = prd_content.find('<script>')
     p_params_idx = prd_content.find('const params = new URLSearchParams(location.search);')
     if p_script_idx != -1 and p_params_idx != -1:
@@ -229,7 +271,6 @@ def build():
   """
         prd_content = p_prefix + new_p_script_head + p_suffix
 
-    # Update default ID fallback
     first_pid = products[0]['id']
     prd_content = re.sub(
         r"const id = PRODUCTS\[params\.get\('id'\)\] \? params\.get\('id'\) : '[^']+';",
@@ -251,7 +292,8 @@ def build():
   <url><loc>https://thetaleofher.com/katalog.html</loc><priority>0.8</priority></url>
 """
     for p in products:
-        sitemap_xml += f"  <url><loc>https://thetaleofher.com/produk.html?id={p['id']}&amp;c=0</loc><priority>0.6</priority></url>\n"
+        for c_idx in range(len(p['colors'])):
+            sitemap_xml += f"  <url><loc>https://thetaleofher.com/produk.html?id={p['id']}&amp;c={c_idx}</loc><priority>0.6</priority></url>\n"
     sitemap_xml += "</urlset>\n"
 
     with open(SITEMAP_FILE, 'w', encoding='utf-8') as f:
@@ -259,7 +301,7 @@ def build():
     print("[OK] sitemap.xml updated.")
 
     print("\n=============================================================")
-    print("    ALL PAGES SUCCESSFULLY UPDATED & SYNCHRONIZED!")
+    print(f"    SUCCESSFULLY COMPILED ALL {len(products)} PRODUCTS (16 TOTAL)!")
     print("=============================================================")
 
 if __name__ == '__main__':
