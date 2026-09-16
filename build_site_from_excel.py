@@ -66,7 +66,17 @@ def build():
         if r[0]:
             pid = str(r[0]).strip().lower()
             name = str(r[1] or '').strip()
-            cat = str(r[2] or '').strip().lower()
+            raw_cat = str(r[2] or '').strip().lower()
+            if raw_cat in ['blouse', 'blouses']:
+                cat = 'blouses'
+            elif raw_cat in ['shirt', 'shirts']:
+                cat = 'shirts'
+            elif raw_cat in ['outer', 'outers']:
+                cat = 'outer'
+            elif raw_cat in ['vest', 'vests']:
+                cat = 'vest'
+            else:
+                cat = raw_cat
             price = int(r[3]) if r[3] else 0
             tag = str(r[4] or '').strip()
             color_raw = str(r[5] or '').strip()
