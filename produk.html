@@ -183,7 +183,6 @@
       <h1 class="f text-[clamp(2rem,4vw,2.9rem)] font-light leading-tight" id="ptitle">—</h1>
       <div class="flex items-center gap-3 mt-3 mb-7">
         <p class="text-lg" id="pprice">—</p>
-        <span class="text-[11px] text-[var(--stone)]" id="pinstall"></span>
       </div>
 
       <p class="text-[14px] leading-relaxed text-[var(--ink-soft)] mb-8 max-w-md" id="pdesc"></p>
@@ -551,7 +550,6 @@
     document.getElementById('pline').textContent = P.line;
     document.getElementById('ptitle').textContent = P.name;
     document.getElementById('pprice').textContent = rp(P.price);
-    document.getElementById('pinstall').textContent = P.price > 0 ? '· from ' + rp(Math.round(P.price/6)) + '/mo' : '';
     document.getElementById('pdesc').textContent = P.desc;
     document.getElementById('pfit').textContent = P.fit;
     document.getElementById('pmat').textContent = P.mat;
