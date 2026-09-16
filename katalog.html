@@ -299,7 +299,6 @@
           </div>
           <p class="text-[13px] whitespace-nowrap">${rp(p.price)}</p>
         </div>
-        <div class="flex gap-1.5 mt-2.5">${swatches}</div>
       </a>`;
   }
 
@@ -321,17 +320,6 @@
     grid.querySelectorAll('.fav').forEach(b=>b.addEventListener('click',e=>{
       e.preventDefault(); b.classList.toggle('on'); b.innerHTML = b.classList.contains('on') ? '&#9829;' : '&#9825;';
     }));
-    grid.querySelectorAll('.card').forEach(card=>{
-      const p = RENDERED[+card.dataset.n];
-      card.querySelectorAll('.swatch').forEach(s=>s.addEventListener('click',e=>{
-        e.preventDefault(); e.stopPropagation();
-        card.querySelectorAll('.swatch').forEach(x=>x.classList.remove('sel')); s.classList.add('sel');
-        const i=+s.dataset.i;
-        if(p && p.imgs && p.imgs[i]){
-          const front=card.querySelector('.front'); if(front) front.src=p.imgs[i];
-        }
-      }));
-    });
   }
 
   function currentList(){
