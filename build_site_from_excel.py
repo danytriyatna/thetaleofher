@@ -115,14 +115,9 @@ def build():
         feat_html_list.append(feat_card)
     feat_grid_html = '\n\n'.join(feat_html_list)
 
-    # Custom replacement using regex find
     match = re.search(r'(<div class="grid grid-cols-2 lg:grid-cols-4 gap-x-5 gap-y-14">)(.*?)(</div>\s*</section>)', idx_content, re.DOTALL)
     if match:
         idx_content = idx_content[:match.start(2)] + '\n' + feat_grid_html + '\n    ' + idx_content[match.end(2):]
-
-    # Update editorial band image to first product
-    idx_content = re.sub(r'assets/vittoria-black-1\.jpg', products[0]['front_img'], idx_content)
-    idx_content = re.sub(r'assets/camalia-taupe-6\.jpg', products[1]['front_img'], idx_content)
 
     with open(INDEX_FILE, 'w', encoding='utf-8') as f:
         f.write(idx_content)
@@ -163,13 +158,21 @@ def build():
         )
     js_prods_str = 'const products = [\n' + ',\n'.join(js_prods) + '\n  ];'
 
-    # Replace products array in katalog.html
-    kat_content = re.sub(
-        r'const products = \[\s*\{.*?\}\s*\];',
-        lambda m: js_prods_str,
-        kat_content,
-        flags=re.DOTALL
-    )
+    # Replace script section in katalog.html
+    # Find from <script> to const grid =
+    script_start_idx = kat_content.find('<script>')
+    grid_idx = kat_content.find('const grid = document.getElementById(\'grid\');')
+    if script_start_idx != -1 and grid_idx != -1:
+        prefix = kat_content[:script_start_idx]
+        suffix = kat_content[grid_idx:]
+        new_script_head = f"""<script>
+  const IMG = (id) => `https://images.unsplash.com/photo-${{id}}?fm=jpg&q=70&w=800&auto=format&fit=crop`;
+  const rp = (n) => (n && n > 0) ? 'Rp ' + n.toLocaleString('id-ID') : 'Price on request';
+
+  {js_prods_str}
+
+  """
+        kat_content = prefix + new_script_head + suffix
 
     with open(KATALOG_FILE, 'w', encoding='utf-8') as f:
         f.write(kat_content)
@@ -212,21 +215,19 @@ def build():
     products_obj_str = "const PRODUCTS = {\n" + ",\n".join(prod_dict_entries) + "\n  };"
     related_obj_str = "const RELATED = [\n" + ",\n".join(related_entries) + "\n  ];"
 
-    # Replace PRODUCTS in produk.html
-    prd_content = re.sub(
-        r'const PRODUCTS = \{.*?\n  \};',
-        lambda m: products_obj_str,
-        prd_content,
-        flags=re.DOTALL
-    )
+    # Replace from <script> to const params = in produk.html
+    p_script_idx = prd_content.find('<script>')
+    p_params_idx = prd_content.find('const params = new URLSearchParams(location.search);')
+    if p_script_idx != -1 and p_params_idx != -1:
+        p_prefix = prd_content[:p_script_idx]
+        p_suffix = prd_content[p_params_idx:]
+        new_p_script_head = f"""<script>
+  const rp = n => (n && n > 0) ? 'Rp ' + n.toLocaleString('id-ID') : 'Price on request';
+  {products_obj_str}
+  {related_obj_str}
 
-    # Replace RELATED in produk.html
-    prd_content = re.sub(
-        r'const RELATED = \[.*?\n  \];',
-        lambda m: related_obj_str,
-        prd_content,
-        flags=re.DOTALL
-    )
+  """
+        prd_content = p_prefix + new_p_script_head + p_suffix
 
     # Update default ID fallback
     first_pid = products[0]['id']
